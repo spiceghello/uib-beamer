@@ -1,0 +1,173 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% UiB beamer theme
+%
+% Get the most recent version at
+% https://github.com/spiceghello/uib-beamer
+% (please report/fix bugs)
+%
+% UiB logo, emblem, colours, etc. from:
+% https://manual.uib.no/profilmanual/
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{ifthen}
+\RequirePackage{tikz}
+\RequirePackage{lmodern}
+\usetikzlibrary{calc}
+
+\mode<presentation>
+
+\definecolor{uibpalegray}{RGB}{235,235,235}
+
+\useinnertheme[shadow=true]{rounded}
+\useoutertheme{infolines}
+\usecolortheme{uibred}
+
+\setbeamerfont{block title}{size={}}
+\setbeamercolor{titlelike}{parent=structure,bg=white}
+
+\setbeamerfont{frametitle}{series=\bfseries}
+
+\setbeamersize{text margin left=21pt}
+\setbeamersize{text margin right=21pt}
+
+\setbeamertemplate{section in toc}{\ {\scriptsize\raise1.25pt\hbox{\textcolor{uibmain}{$\blacktriangleright$}}} \inserttocsection\par}
+\setbeamertemplate{subsection in toc}{\quad \ {\scriptsize\raise1.25pt\hbox{\textcolor{uibsnd}{$\blacktriangleright$}}} \footnotesize\inserttocsubsection\normalsize\par}
+\setbeamertemplate{subsubsection in toc}{\qquad\quad \ {\scriptsize\raise1.25pt\hbox{$\blacktriangleright$}} \scriptsize\inserttocsubsubsection\normalsize\par}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{headline}{}
+\setbeamertemplate{blocks}[rounded]
+
+\makeatletter
+\pgfdeclareverticalshading[lower.bg,upper.bg]{bmb@transition}{200cm}{%
+  color(0pt)=(lower.bg); color(2pt)=(lower.bg); color(4pt)=(lower.bg)}
+\makeatother
+
+\setbeamertemplate{background canvas}{%
+\begin{tikzpicture}
+\useasboundingbox (0,0) rectangle (\the\paperwidth,\the\paperheight);
+\shade<beamer>[top color=uibpalegray,bottom color=white] (10pt,10pt) rectangle ([shift={(-10pt,-10pt)}]\the\paperwidth,\the\paperheight);
+\end{tikzpicture}%     
+}
+	
+\setbeamertemplate{enumerate items}[default]
+\setbeamertemplate{itemize items}[triangle]
+\setbeamertemplate{bibliography item}[triangle]
+	
+\setbeamerfont{frametitle}{series=\bfseries}
+\setbeamerfont{footnote}{size=\tiny}
+\setbeamertemplate{footnote}%
+{%
+    \parindent 1em\noindent%
+    \raggedright
+    \hbox to .5em{\hfil\insertfootnotemark}\insertfootnotetext\par%
+}
+\renewcommand{\footnoterule}{\textcolor{uibsnd}{\hrule width .33\textwidth}}
+
+\setbeamersize{text margin left=21pt}
+\setbeamersize{text margin right=21pt}
+
+	\newcounter{togglelogo}
+	\newcounter{memorylogo}
+	\newcommand{\uiblogo}{%
+	\begin{tikzpicture}[remember picture,overlay]\footnotesize
+		\ifthenelse{\value{togglelogo}=1}
+		{\node<beamer>[anchor=east] at ($(current page.south east)+(-6pt,30pt)$) {\includegraphics[scale=.4]{graphic_elements/UiB-emblem_gray.eps}};}
+		{\ifthenelse{\value{togglelogo}=2}
+		{\node<beamer>[anchor=east] at ($(current page.south east)+(-6pt,30pt)$) {\includegraphics[scale=.4]{graphic_elements/UiB-emblem.eps}};}
+		{}}
+	\end{tikzpicture}
+	}
+	\newcommand{\stoplogo}{\setcounter{togglelogo}{0}}
+	\newcommand{\blacklogo}{\setcounter{togglelogo}{1}}
+	\newcommand{\whitelogo}{\setcounter{togglelogo}{2}}
+	\blacklogo
+	\setcounter{memorylogo}{\thetogglelogo}
+	\newcommand{\templogo}[1]{\setcounter{memorylogo}{\thetogglelogo}#1\uiblogo\setcounter{togglelogo}{\thememorylogo}}
+	
+\setbeamertemplate{frametitle}{%
+    \nointerlineskip%
+    \begin{beamercolorbox}[wd=\paperwidth,ht=4.5ex,dp=0.6ex]{frametitle}
+        \hspace*{3ex}\insertframetitle%
+    \end{beamercolorbox}\vspace*{-3pt}%
+}
+
+\makeatletter
+\setbeamertemplate{title page}{
+	\usebeamercolor{postit}
+	\begin{tikzpicture}[remember picture,overlay]
+		\node[anchor=south,text width=\textwidth,align=center] at ($(current page.north)+(0,-.56\paperheight)$) {\LARGE\bfseries\inserttitle%
+			\ifx\insertsubtitle\@empty%
+			\else%
+			\par\vspace*{10pt}\Large\insertsubtitle%
+			\fi};
+		\filldraw[bg] ([shift={(10pt,10pt)}]current page.south west) rectangle ($([shift={(-10pt,0pt)}]current page.south east)+(0,.4\paperheight)$);
+		\node[white] at ($(current page.south)+(0,.33\paperheight)$) {\Large\insertauthor};
+		\node[anchor=east] at ($(current page.south east)+(-10pt,32pt)$) {\includegraphics[scale=.4]{graphic_elements/UiBlogo_hvit_h.eps}};
+		\node[white,anchor=west,text width=.5\paperwidth,align=center] at ($(current page.south west)+(0pt,32pt)$) {\insertdate};
+		\node[gray,anchor=north,text width=.95\paperwidth,align=center] at ([shift={(0,-15pt)}]current page.north) {\textsc{\large\insertinstitute}};
+	\end{tikzpicture}
+}
+\def\maketitle{\ifbeamer@inframe\titlepage\else\frame[plain,noframenumbering]{\titlepage}\fi}
+\makeatother
+
+\setbeamertemplate{footline}{
+	\parbox{\paperwidth}{\includegraphics[scale=.5]{graphic_elements/UiB-fargestripe.eps}\uiblogo}
+  \begin{beamercolorbox}[wd=.8\paperwidth,ht=2.25ex,dp=1ex]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\hspace*{2ex}\insertshortauthor\ |\ \usebeamerfont{title in head/foot}\insertshorttitle
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.2\paperwidth,ht=2.25ex,dp=1ex,right]{author in head/foot}%
+    \insertframenumber{} / \inserttotalframenumber\hspace*{2ex} 
+  \end{beamercolorbox}%
+}
+
+\AtBeginSection[]%
+{%
+{\setbeamertemplate{background canvas}{%
+\usebeamercolor{postit}%
+\begin{tikzpicture}
+\useasboundingbox (0,0) rectangle (\the\paperwidth,\the\paperheight);
+\filldraw<beamer>[bg] (10pt,10pt) rectangle ([shift={(-10pt,-10pt)}]\the\paperwidth,\the\paperheight);
+\end{tikzpicture}%     
+}
+\begin{frame}[plain,noframenumbering]
+	\vspace*{35pt}\hspace*{10pt}\usebeamercolor{frametitle}
+	\only<beamer>{\parbox{.6\paperwidth}{\raggedright\Huge\textcolor{white}{\secname}}\templogo{\whitelogo}}
+	\only<handout>{\parbox{.6\paperwidth}{\raggedright\Huge\textcolor{fg}{\secname}}\templogo{\whitelogo}}
+\end{frame}
+}%
+}
+
+\newcommand{\titleframe}{\frame[plain,noframenumbering]{\titlepage}}
+\newcommand{\finalframe}{\begin{frame}<handout:0>[plain,noframenumbering]
+	\vspace*{20pt}
+	\begin{center}
+	\begin{tikzpicture}
+		\node[anchor=south] at (0,0) {\includegraphics[scale=1.4]{graphic_elements/UiB-emblem_gray.eps}};	
+		\node[anchor=north] at (0,10pt) {\includegraphics[scale=1]{graphic_elements/UiB-fargestripe.eps}};
+		\node[gray,anchor=north] at (0,-5pt) {\Large\textsc{university of bergen}};
+	\end{tikzpicture}
+	\end{center}
+\end{frame}}
+
+\newcommand{\bubblepic}[4]{%
+	\usebeamercolor{frametitle}%
+	\begin{tikzpicture}[baseline]
+		\begin{scope}
+		\clip (0,0) circle (#3);
+		\node at (0,0) {\includegraphics[height=#2,keepaspectratio]{#1}};
+		\end{scope}
+		\node[fg,anchor=north,yshift=-8pt,text width=2.5*#3,align=center] at (0,-#3) {#4};
+	\end{tikzpicture}}
+
+\newcommand{\pagepic}[1]{%
+	\begin{tikzpicture}[remember picture,overlay]
+		\node at (current page.center) {\includegraphics[height=\paperheight]{#1}};
+	\end{tikzpicture}
+	}
+
+\newcommand{\uibred}{\definecolor{uibmain}{RGB}{219,63,61}\definecolor{uibsnd}{RGB}{170,0,0}}
+\newcommand{\uibgreen}{\definecolor{uibmain}{RGB}{120,154,91}\definecolor{uibsnd}{RGB}{48,81,48}}
+\newcommand{\uibblue}{\definecolor{uibmain}{RGB}{78,160,183}\definecolor{uibsnd}{RGB}{0,76,112}}
+
+\mode
+<all>
