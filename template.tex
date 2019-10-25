@@ -1,0 +1,56 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% UiB beamer theme
+%
+% Get the most recent version at
+% https://github.com/spiceghello/uib-beamer
+% (please report/fix bugs)
+%
+% UiB logo, emblem, colours, etc. from:
+% https://manual.uib.no/profilmanual/
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[t,aspectratio=169]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\title[]{}
+\subtitle[]{}
+\author[]{}
+\institute{}
+\date{}
+
+\usetheme{uib}
+\usecolortheme{uibred} % uibred | uibgreen | uibblue
+
+%%% Change color theme mid-presentation:
+%%% \uibred | \uibblue | \uibgreen
+
+%%% Color names are uibmain and uibsnd
+
+%%% Toggle UiB logo on the bottom-left:
+%%% The logo appears black on default slides; it appears white on section titles.
+%%% Use \stoplogo to stop displaying the black logo on default slides;
+%%% use \blacklogo or \whitelogo to display a black or white logo (on "plain" slides, i.e. without footer), or to resume displaying the black (or white!) logo on default slides;
+%%% use \templogo{...} to toggle the UiB logo only to the selected (plain) slide, e.g.: \templogo{\whitelogo} will print a white logo on a plain slide, then resume default behaviour from the following slide.
+
+%%% Bubbles:
+%%% \bubblepic{filename}{resize image}{radius bubble}{caption}
+
+%%% Full-screen picture:
+%%% \pagepic{filename}
+
+%%% We use tikz with remember picture, overlay sort of everywhere
+%%% so the document must be compiled twice.
+
+\begin{document}
+
+\titleframe
+
+%\frame{\frametitle{Outline}\tableofcontents}
+
+\section{\ }
+
+\frame{}
+
+\finalframe
+
+\end{document}
