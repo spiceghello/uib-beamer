@@ -1,0 +1,143 @@
+\documentclass[t,aspectratio=169]{beamer}%
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{ulem}
+\usepackage{pifont}
+\usepackage{wasysym}
+
+\title[Short title]{This is the title of the presentation}
+\subtitle[]{and this is the subtitle}
+\author[N.M. Surname]{Name M. Surname}
+\institute{Institute of Institutionalization}
+\date{February 30, 1970}
+
+\usetheme{uib}
+\usecolortheme{uibred}
+
+\begin{document}
+
+\titleframe
+
+\frame{\frametitle{Outline (section titles get dedicated slides)}\tableofcontents}
+
+\section{Example slides}
+\frame{
+	\frametitle{Test slide}
+	This is some content.\smallskip
+	
+	Itemize:
+	\begin{itemize}
+		\item first item
+		\item second item
+		\begin{itemize}
+			\item subitem
+			\begin{itemize}
+				\item subsubitem
+			\end{itemize}
+		\end{itemize}
+	\end{itemize}\medskip
+	
+	Enumerate:
+	\begin{enumerate}
+		\item first
+		\item second
+		\begin{enumerate}
+			\item subitem
+			\begin{enumerate}
+				\item subsubitem
+			\end{enumerate}
+		\end{enumerate}
+	\end{enumerate}\medskip
+	
+	Conclusions: what a meaningful slide.
+}
+
+\stoplogo
+\frame{
+	\frametitle{Test slide}
+	Several\footnote{This is the first footnote.} footnotes\footnote{This is the second one.} displayed.\footnote{and so on.} Also we can make the UiB logo disappear from this slide.
+	\begin{align*}
+	f : A &\to B\\ a &\mapsto f(a)
+	\end{align*}
+	
+	Table:
+	\begin{center}
+	\begin{tabular}{c|c|c}
+	some & fake & table\\\hline
+	1 & 2.5 & -4\\
+	6 & 0 & one million
+	\end{tabular}
+	\end{center}\medskip
+}
+\blacklogo
+
+\section{Pictures}
+
+\frame{
+	\frametitle{<<It's in a bubble, so it must be true!>>}
+	Random pictures from my phone are now in bubbles!\medskip\pause\footnotesize
+	\begin{center}
+	%\bubblepic{filename}{resize image}{radius bubble}{caption}
+	\bubblepic{graphic_elements/Vuurtoreneiland.jpg}{.2\textwidth}{.1\textwidth}{ Vuurtoreneiland,\\Amsterdam, Netherlands}
+	\qquad\pause
+	\bubblepic{graphic_elements/CastelloDelCatajo.jpg}{.2\textwidth}{.1\textwidth}{Castello del Catajo,\\Battaglia Terme, Italy}
+	\qquad\pause
+	\bubblepic{graphic_elements/CatOnOurRoof.jpg}{.2\textwidth}{.1\textwidth}{Cat on a roof,\\Bergen, Norway}\pause
+	\end{center}\normalsize\bigskip
+	The next slide displays a full-screen picture.
+}
+
+\frame[plain]{
+	\pagepic{graphic_elements/StoreTindevatnet.jpg}\templogo{\whitelogo}
+	
+	\begin{tikzpicture}\Huge\bfseries
+		\node<2>[white, rotate=10] at (0,0) {<<OCEAN, LIFE, SOCIETY>>};
+		\node<2>[scale=1.2,red, rotate=-15] at (4,-1.5) {Strategy};
+		\node<2>[scale=2.5, red!50!yellow, rotate=45] at (-1,-4) {VISION};
+		\node<2>[scale=.3,pink] at (4.5,-5.8) {my own three random dingbats};
+		\node<2>[scale=3,rotate=4] at (4,-4.5) {\textcolor{blue!80!white}{\sun}\textcolor{red!70!white}{\ding{171}}\textcolor{green!70!white}{$\blacksquare$}};
+	\end{tikzpicture}
+}
+
+\section{Blocks}
+
+\frame{
+	\frametitle{Test blocks}
+	\begin{block}{Normal Block}
+	This block contains some generic information.
+	\end{block}\vfill\pause
+	\begin{alertblock}{Alert Block}
+	In \textit{handout} mode, the background gradient and the logo disappear from the slides; section titles are more printer-friendly and the final frame is not present.
+	\end{alertblock}\vfill\pause
+	\begin{example}
+	Content
+	\end{example}\vfill
+}
+
+\frame{\vspace*{3pt}
+	A slide without a title. Test blocks, continued.
+	\begin{theorem}
+	Content
+	\end{theorem}\vfill\pause
+	\begin{proof}
+	Content
+	\end{proof}\vfill\pause
+	\begin{corollary}
+	Content
+	\end{corollary}\vfill
+}
+
+\frame{
+	\frametitle{In closure}
+	Let's conclude with an inspiring quote.\bigskip
+	
+	\begin{quote}
+	Let's conclude with an inspiring quote.\\
+	\qquad \qquad \qquad \qquad \qquad \quad -- nobody
+	\end{quote}
+}
+
+\finalframe
+
+\end{document}
