@@ -1,10 +1,4 @@
 \documentclass[t,aspectratio=169]{beamer}%
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-
-\usepackage{ulem}
-\usepackage{pifont}
-\usepackage{wasysym}
 
 \title[Short title]{This is the title of the presentation}
 \subtitle[]{and this is the subtitle}
@@ -14,6 +8,11 @@
 
 \usetheme{uib}
 \usecolortheme{uibred}
+
+\usepackage{ulem}
+\usepackage{pifont}
+\usepackage{wasysym}
+\usepackage{bm}
 
 \begin{document}
 
@@ -58,7 +57,7 @@
 	\frametitle{Test slide}
 	Several\footnote{This is the first footnote.} footnotes\footnote{This is the second one.} displayed.\footnote{and so on.} Also we can make the UiB logo disappear from this slide.
 	\begin{align*}
-	f : A &\to B\\ a &\mapsto f(a)
+	f : A &\to B\\ \bm a &\mapsto f(a)
 	\end{align*}
 	
 	Table:
